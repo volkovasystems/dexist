@@ -100,7 +100,20 @@ var dexist = function dexist( task, callback ){
 
 	try{
 		return snapd( function kill( ){
-			child.execSync( command );
+			try{
+				child.execSync( command );
+
+			}catch( error ){
+				var _error = error.toString( "utf8" ).trim( ).split( "\n" );
+
+				_error = _error.reverse( );
+				_error.pop( );
+				error = _error.reverse( ).join( "\n" );
+
+				if( error ){
+					throw new Error( error );
+				}
+			}
 		} )( callback );
 
 	}catch( error ){
