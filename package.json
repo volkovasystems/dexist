@@ -1,0 +1,32 @@
+{
+  "name": "dexist",
+  "version": "0.0.0",
+  "description": "Death beyond existence. Kill process in any platform.",
+  "main": "dexist.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/volkovasystems/dexist.git"
+  },
+  "keywords": [
+    "pkill",
+    "taskkill",
+    "kill",
+    "process",
+    "dexist",
+    "death"
+  ],
+  "author": "Richeve S. Bebedor <richeve.bebedor@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/volkovasystems/dexist/issues"
+  },
+  "homepage": "https://github.com/volkovasystems/dexist#readme",
+  "dependencies": {
+    "called": "0.0.5",
+    "pedon": "0.0.0",
+    "snapd": "0.0.0"
+  }
+}
