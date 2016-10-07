@@ -1,6 +1,6 @@
 {
   "name": "dexist",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Death beyond existence. Kill process in any platform.",
   "main": "dexist.js",
   "scripts": {
@@ -27,6 +27,6 @@
   "dependencies": {
     "called": "^0.1.2",
     "pedon": "0.0.1",
-    "snapd": "0.0.5"
+    "snapd": "^0.1.0"
   }
 }

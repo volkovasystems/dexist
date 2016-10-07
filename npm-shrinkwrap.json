@@ -1,0 +1,102 @@
+{
+  "name": "dexist",
+  "version": "0.0.4",
+  "dependencies": {
+    "called": {
+      "version": "0.1.2",
+      "from": "called@latest",
+      "dependencies": {
+        "ate": {
+          "version": "0.0.0",
+          "from": "ate@0.0.0"
+        },
+        "harden": {
+          "version": "0.3.5",
+          "from": "harden@>=0.3.5 <0.4.0"
+        },
+        "raze": {
+          "version": "0.0.8",
+          "from": "raze@0.0.8"
+        },
+        "zelf": {
+          "version": "0.0.4",
+          "from": "zelf@0.0.4",
+          "dependencies": {
+            "asea": {
+              "version": "0.1.2",
+              "from": "asea@>=0.1.2 <0.2.0"
+            }
+          }
+        }
+      }
+    },
+    "pedon": {
+      "version": "0.0.1",
+      "from": "pedon@latest",
+      "dependencies": {
+        "cobralize": {
+          "version": "0.1.2",
+          "from": "cobralize@>=0.1.2 <0.2.0",
+          "dependencies": {
+            "disdo": {
+              "version": "0.1.1",
+              "from": "disdo@>=0.1.1 <0.2.0"
+            }
+          }
+        },
+        "harden": {
+          "version": "0.3.5",
+          "from": "harden@>=0.3.5 <0.4.0"
+        },
+        "shardize": {
+          "version": "0.3.1",
+          "from": "shardize@>=0.3.1 <0.4.0",
+          "dependencies": {
+            "disdo": {
+              "version": "0.1.1",
+              "from": "disdo@>=0.1.1 <0.2.0"
+            }
+          }
+        }
+      }
+    },
+    "snapd": {
+      "version": "0.1.0",
+      "from": "snapd@latest",
+      "dependencies": {
+        "asea": {
+          "version": "0.1.2",
+          "from": "asea@>=0.1.2 <0.2.0",
+          "resolved": "https://registry.npmjs.org/asea/-/asea-0.1.2.tgz",
+          "dependencies": {
+            "harden": {
+              "version": "0.3.5",
+              "from": "harden@>=0.3.5 <0.4.0"
+            }
+          }
+        },
+        "budge": {
+          "version": "0.0.1",
+          "from": "budge@0.0.1",
+          "dependencies": {
+            "raze": {
+              "version": "0.0.8",
+              "from": "raze@0.0.8",
+              "dependencies": {
+                "harden": {
+                  "version": "0.3.5",
+                  "from": "harden@>=0.3.5 <0.4.0"
+                }
+              }
+            }
+          }
+        },
+        "zelf": {
+          "version": "0.0.4",
+          "from": "zelf@0.0.4",
+          "resolved": "https://registry.npmjs.org/zelf/-/zelf-0.0.4.tgz"
+        }
+      }
+    }
+  }
+}
