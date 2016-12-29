@@ -32,6 +32,9 @@
 			"file": "dexist.js",
 			"module": "dexist",
 			"author": "Richeve S. Bebedor",
+			"contributors": [
+				"John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>"
+			],
 			"eMail": "richeve.bebedor@gmail.com",
 			"repository": "https://github.com/volkovasystems/dexist.git",
 			"test": "dexist-test.js",
@@ -53,12 +56,13 @@
 	@end-include
 */
 
-var called = require( "called" );
-var child = require( "child_process" );
-var pedon = require( "pedon" );
-var snapd = require( "snapd" );
+const called = require( "called" );
+const child = require( "child_process" );
+const pedon = require( "pedon" );
+const protype = require( "protype" );
+const snapd = require( "snapd" );
 
-var dexist = function dexist( task, callback ){
+const dexist = function dexist( task, callback ){
 	/*;
 		{
 			"task:required": "string",
@@ -66,8 +70,7 @@ var dexist = function dexist( task, callback ){
 		}
 	*/
 
-	if( typeof task != "string" ||
-		!task )
+	if( !protype( task, STRING ) || !task )
 	{
 		throw new Error( "invalid task to kill" );
 	}
@@ -76,7 +79,7 @@ var dexist = function dexist( task, callback ){
 		throw new Error( "invalid task format" );
 	}
 
-	var self = this;
+	let self = this;
 	if( !this ||
 		this === global )
 	{
@@ -85,7 +88,7 @@ var dexist = function dexist( task, callback ){
 
 	callback = called.bind( self )( callback );
 
-	var command = "";
+	let command = "";
 	if( pedon.WINDOWS ){
 		command = "taskkill /im @pattern*".replace( "@pattern", task );
 
@@ -102,7 +105,7 @@ var dexist = function dexist( task, callback ){
 				child.execSync( command );
 
 			}catch( error ){
-				var _error = error.toString( "utf8" ).trim( ).split( "\n" );
+				let _error = error.toString( "utf8" ).trim( ).split( "\n" );
 
 				_error = _error.reverse( );
 				_error.pop( );

@@ -1,10 +1,10 @@
 {
   "name": "dexist",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "Death beyond existence. Kill process in any platform.",
   "main": "dexist.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha dexist-test.js"
   },
   "repository": {
     "type": "git",
@@ -19,14 +19,18 @@
     "death"
   ],
   "author": "Richeve S. Bebedor <richeve.bebedor@gmail.com>",
+  "contributors": [
+    "John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/volkovasystems/dexist/issues"
   },
   "homepage": "https://github.com/volkovasystems/dexist#readme",
   "dependencies": {
-    "called": "^0.1.2",
-    "pedon": "0.0.1",
-    "snapd": "^0.1.0"
+    "called": "^0.5.0",
+    "pedon": "^0.2.0",
+    "protype": "^0.7.0",
+    "snapd": "^0.5.0"
   }
 }
