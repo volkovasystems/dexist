@@ -225,9 +225,28 @@ harden@^0.7.0:
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/harden/-/harden-0.7.0.tgz#d062d8c3e409c9aa5976b8235b66de1ba6702237"
 
+impel@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/impel/-/impel-0.3.0.tgz#15b036ab3980c65f2dfed92ae9474f9aba6b8f8e"
+  dependencies:
+    asea "^0.6.0"
+    babel-runtime "^6.20.0"
+    falzy "^0.7.0"
+    kein "^0.5.0"
+    protype "^0.8.0"
+    zelf "^0.4.0"
+
 kein@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/kein/-/kein-0.2.0.tgz#642a7f5ca4a1095e94d942fb1eee5455bfc9052b"
+  dependencies:
+    babel-runtime "^6.20.0"
+    falzy "^0.7.0"
+    protype "^0.8.0"
+
+kein@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/kein/-/kein-0.5.0.tgz#959e59a7444f9f447652af403d05560416be5a69"
   dependencies:
     babel-runtime "^6.20.0"
     falzy "^0.7.0"
@@ -370,15 +389,16 @@ shardize@^0.4.0:
     harden "^0.7.0"
     protype "^0.4.0"
 
-snapd@^0.7.0:
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/snapd/-/snapd-0.7.0.tgz#15b2c4d5304fdf9394625805b39f463f89de8546"
+snapd@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/snapd/-/snapd-0.9.0.tgz#ec34e16db294382761c08ef16c377f222d45aa0b"
   dependencies:
     asea "^0.6.0"
     babel-runtime "^6.20.0"
     budge "^0.5.0"
     harden "^0.13.0"
-    kein "^0.2.0"
+    impel "^0.3.0"
+    kein "^0.5.0"
     letgo "^0.6.0"
     pringe "^0.2.0"
     protype "^0.8.0"
