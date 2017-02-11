@@ -2,6 +2,6 @@
 
 const dexist = require( "./dexist.js" );
 
-dexist( "ls", function( ){
-
+dexist( "node", function done( ){
+	console.log( arguments );
 } );

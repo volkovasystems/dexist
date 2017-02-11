@@ -1,5 +1,3 @@
-"use strict";
-
 /*;
 	@module-license:
 		The MIT License (MIT)
@@ -45,35 +43,46 @@
 	@end-module-configuration
 
 	@module-documentation:
-		Kill process in any platform.
+		Death beyond existence. Kill process in any platform.
 	@end-module-documentation
 
 	@include:
 		{
 			"called": "called",
 			"child": "child_process",
+			"falzy": "falzy",
 			"pedon": "pedon",
-			"snapd": "snapd"
+			"protype": "protype",
+			"snapd": "snapd",
+			"zelf": "zelf"
 		}
 	@end-include
 */
 
 const called = require( "called" );
 const child = require( "child_process" );
+const falzy = require( "falzy" );
+const numric = require( "numric" );
 const pedon = require( "pedon" );
 const protype = require( "protype" );
 const snapd = require( "snapd" );
+const zelf = require( "zelf" );
+
+const NAME = "name";
+const PID = "pid";
 
 const dexist = function dexist( task, callback ){
 	/*;
 		{
-			"task:required": "string",
+			"task:required": [
+				"string",
+				"number"
+			],
 			"callback": "function"
 		}
 	*/
 
-	if( !protype( task, STRING ) || !task )
-	{
+	if( falzy( task ) || !protype( task, STRING + NUMBER ) ){
 		throw new Error( "invalid task to kill" );
 	}
 
@@ -81,40 +90,50 @@ const dexist = function dexist( task, callback ){
 		throw new Error( "invalid task format" );
 	}
 
-	let self = this;
-	if( !this ||
-		this === global )
-	{
-		self = global;
-	}
+	let self = zelf( this );
 
 	callback = called.bind( self )( callback );
 
+	let mode = NAME;
+	if( numric( task ) ){
+		mode = PID;
+	}
+
 	let command = "";
 	if( pedon.WINDOWS ){
-		command = "taskkill /im @pattern*".replace( "@pattern", task );
+		if( mode === PID ){
+			command = `taskkill /pid ${ task } /f`;
+
+		}else{
+			command = `taskkill /im ${ task }* /f`;
+		}
+
+	}else if( mode === PID ){
+		command = `kill -9 ${ task }`;
 
 	}else if( pedon.LINUX ){
-		command = "pkill @pattern".replace( "@pattern", task );
+		command = `pkill -9 ${ task }`;
 
 	}else{
-		command = "kill $(ps -e | grep @pattern | awk '{print $1}')".replace( "@pattern", task );
+		command = `kill -9 $(ps -e | grep ${ task } | tr -s ' ' | xargs echo -n | cut -d ' ' -f 1)`;
 	}
 
 	try{
-		return snapd( function kill( ){
+		return snapd.bind( self )( function kill( ){
 			try{
 				child.execSync( command );
 
+				return true;
+
 			}catch( error ){
-				let _error = error.toString( "utf8" ).trim( ).split( "\n" );
+				let issue = error.toString( "utf8" ).trim( ).split( "\n" );
 
-				_error = _error.reverse( );
-				_error.pop( );
-				error = _error.reverse( ).join( "\n" );
+				issue = issue.reverse( );
+				issue.pop( );
+				issue = issue.reverse( ).join( "\n" );
 
-				if( error ){
-					throw new Error( error );
+				if( issue ){
+					throw new Error( issue );
 				}
 			}
 		} )( callback );
