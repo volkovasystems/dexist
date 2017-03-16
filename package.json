@@ -1,6 +1,6 @@
 {
   "name": "dexist",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "Death beyond existence. Kill process in any platform.",
   "main": "dexist.js",
   "scripts": {
@@ -28,12 +28,12 @@
   },
   "homepage": "https://github.com/volkovasystems/dexist#readme",
   "dependencies": {
-    "called": "^0.14.0",
-    "falzy": "^0.13.0",
-    "numric": "^0.8.0",
-    "pedon": "^0.7.0",
-    "protype": "^0.17.0",
-    "snapd": "^0.15.0",
-    "zelf": "^0.8.0"
+    "called": "^0.15.0",
+    "falzy": "^0.16.0",
+    "numric": "^0.10.0",
+    "pedon": "^0.10.0",
+    "protype": "^0.20.0",
+    "snapd": "^0.16.0",
+    "zelf": "^0.10.0"
   }
 }
