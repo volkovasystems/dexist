@@ -48,30 +48,33 @@
 
 	@include:
 		{
-			"called": "called",
 			"child": "child_process",
+			"depher": "depher",
 			"falzy": "falzy",
 			"pedon": "pedon",
 			"protype": "protype",
+			"shft": "shft",
 			"snapd": "snapd",
 			"zelf": "zelf"
 		}
 	@end-include
 */
 
-const called = require( "called" );
 const child = require( "child_process" );
+const depher = require( "depher" );
 const falzy = require( "falzy" );
 const numric = require( "numric" );
 const pedon = require( "pedon" );
 const protype = require( "protype" );
+const shft = require( "shft" );
 const snapd = require( "snapd" );
 const zelf = require( "zelf" );
 
 const NAME = "name";
 const PID = "pid";
+const TASK_PATTERN = /^[a-zA-Z0-9_\-]+$/;
 
-const dexist = function dexist( task, callback ){
+const dexist = function dexist( task, synchronous, option ){
 	/*;
 		{
 			"task:required": [
@@ -86,13 +89,17 @@ const dexist = function dexist( task, callback ){
 		throw new Error( "invalid task to kill" );
 	}
 
-	if( !( /^[a-zA-Z0-9_\-]+$/ ).test( task ) ){
+	if( !TASK_PATTERN.test( task ) ){
 		throw new Error( "invalid task format" );
 	}
 
-	let self = zelf( this );
+	let parameter = shft( arguments );
 
-	callback = called.bind( self )( callback );
+	synchronous = depher( parameter, BOOLEAN, false );
+
+	option = depher( parameter, OBJECT, { } );
+
+	let self = zelf( this );
 
 	let mode = NAME;
 	if( numric( task ) ){
@@ -112,34 +119,33 @@ const dexist = function dexist( task, callback ){
 		command = `kill -9 ${ task }`;
 
 	}else if( pedon.LINUX ){
-		command = `pkill -9 ${ task }`;
+		command = `ps aux | grep ${ task } | grep -v grep | tr -s ' ' | cut -d ' ' -f 1-2 | grep -Po '[0-9]*' | xargs echo -n | xargs kill -9`
 
 	}else{
 		command = `kill -9 $(ps -e | grep ${ task } | tr -s ' ' | xargs echo -n | cut -d ' ' -f 1)`;
 	}
 
-	try{
-		return snapd.bind( self )( function kill( ){
+	if( synchronous ){
+		try{
+			child.execSync( command, option );
+
+			return true;
+
+		}catch( error ){
+			return false;
+		}
+
+	}else{
+		return snapd.bind( zelf( self ) )( function kill( ){
 			try{
-				child.execSync( command );
+				child.execSync( command, option );
 
 				return true;
 
 			}catch( error ){
-				let issue = error.toString( "utf8" ).trim( ).split( "\n" );
-
-				issue = issue.reverse( );
-				issue.pop( );
-				issue = issue.reverse( ).join( "\n" );
-
-				if( issue ){
-					throw new Error( issue );
-				}
+				return false;
 			}
-		} )( callback );
-
-	}catch( error ){
-		return false;
+		} );
 	}
 };
 

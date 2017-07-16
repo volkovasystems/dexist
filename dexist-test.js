@@ -1,5 +1,11 @@
+
+const assert = require( "assert" );
 const dexist = require( "./dexist.js" );
 
-dexist( "node", function done( ){
-	console.log( arguments );
+//:on chrome before testing.
+dexist( "chrome" )( function done( error, result ){
+	assert.equal( result, true, "should be true" );
 } );
+
+//: on firefox before testing.
+assert.equal( dexist( "firefox", true ), true, "should be true" );
